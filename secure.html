@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital World Cyber Café</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+body {margin:0; font-family:Poppins,sans-serif; background:#001a00; color:white; height:100vh; overflow:hidden;}
+
+/* Custom Context Menu */
+.ctx-menu {
+  position:fixed; display:none; z-index:9999;
+  background:linear-gradient(145deg,#004d00,#003300);
+  border:2px solid #00ff88; border-radius:12px;
+  box-shadow:0 8px 25px rgba(0,255,128,0.6);
+  padding:10px; min-width:160px; animation:pop 0.3s ease;
+}
+.ctx-item {padding:12px; border-radius:8px; color:#00ff99;
+  cursor:pointer; font-weight:bold; text-align:center; text-shadow:0 0 8px #00ffcc;}
+.ctx-item:hover {background:rgba(0,255,128,0.1); transform:scale(1.05);}
+
+/* Modal */
+.modal-back {position:fixed; inset:0; display:none; place-items:center; z-index:10000;
+  background:rgba(0,20,0,0.8); animation:fadeIn 0.4s;}
+.modal {background:linear-gradient(145deg,#002200,#001100); border:2px solid #00ff99; border-radius:15px;
+  padding:25px; width:320px; box-shadow:0 0 25px #00ff88, inset 0 0 20px #004d00; animation:zoom 0.5s ease;}
+.modal h2 {color:#00ff88; text-shadow:0 0 15px #00ffcc; margin-bottom:15px;}
+.modal input {width:100%; padding:12px; border-radius:8px; border:1px solid #00ff99;
+  background:#001a00; color:#00ffcc; font-weight:bold; margin-bottom:15px;}
+.modal button {padding:10px 20px; border:none; border-radius:8px; font-weight:bold; cursor:pointer;
+  background:linear-gradient(145deg,#00ff66,#00cc44); color:#001a00; box-shadow:0 5px 15px rgba(0,255,128,0.4); transition:0.3s;}
+.modal button:hover {transform:scale(1.1); box-shadow:0 0 25px #00ff88;}
+
+/* Hidden Button */
+.hidden-btn {display:none; margin:20px auto; padding:15px 30px; background:linear-gradient(145deg,#00ff88,#00cc66);
+  border:none; border-radius:12px; font-weight:bold; font-size:18px; cursor:pointer; color:#001a00;
+  text-shadow:0 0 5px #fff; box-shadow:0 0 20px #00ff99; transition:0.3s;}
+.hidden-btn:hover {transform:scale(1.1);}
+
+/* Alert Overlay */
+.alert-overlay {position:fixed; inset:0; display:none; justify-content:center; align-items:center;
+  background:rgba(30,0,0,0.85); border:10px solid red; z-index:20000; animation:alertGlow 1s infinite alternate;}
+.alert-box {background:#220000; padding:30px 40px; border:4px solid red; border-radius:15px;
+  font-size:22px; font-weight:bold; color:#ff4d4d; text-align:center; box-shadow:0 0 20px red,0 0 50px red;}
+@keyframes alertGlow {from {box-shadow:inset 0 0 20px red;} to {box-shadow:inset 0 0 50px #ff0000;}}
+
+/* Success Overlay */
+.success-overlay {position:fixed; inset:0; display:none; justify-content:center; align-items:center;
+  background:rgba(0,40,0,0.9); z-index:30000; animation:fadeIn 0.5s;}
+.success-box {background:linear-gradient(145deg,#003300,#001a00); border:4px solid #00ff99; border-radius:20px;
+  padding:40px 50px; font-size:24px; font-weight:bold; color:#00ff88; text-align:center;
+  box-shadow:0 0 25px #00ff99,0 0 50px #00ff88; animation:zoom 0.5s ease;}
+.success-timer {margin-top:15px; font-size:18px; color:#ccffcc; text-shadow:0 0 5px #00ffcc;}
+
+/* Animations */
+@keyframes fadeIn {from{opacity:0;} to{opacity:1;}}
+@keyframes zoom {from{transform:scale(0.7);} to{transform:scale(1);}}
+@keyframes pop {from{transform:scale(0.9);} to{transform:scale(1);}}
+</style>
+</head>
+<body>
+
+<!-- Context Menu -->
+<div id="ctx" class="ctx-menu">
+  <div class="ctx-item" id="ctx_unlock"><i class="fa fa-lock"></i> Unlock</div>
+</div>
+
+<!-- Modal -->
+<div id="modalBack" class="modal-back">
+  <div class="modal">
+    <h2>🔒 Enter Passcode</h2>
+    <input type="password" id="passInput" placeholder="Type secret password...">
+    <button id="checkPass">Unlock</button>
+  </div>
+</div>
+
+<!-- Hidden Content -->
+<a href="family.html"> <button id="hiddenBtn" class="hidden-btn">Secret Button</button></a>
+
+<!-- Alert -->
+<div id="alertOverlay" class="alert-overlay">
+  <div class="alert-box">⚠️ This is not a secure page ⚠️</div>
+</div>
+
+<!-- Success -->
+<div id="successOverlay" class="success-overlay">
+  <div class="success-box">
+    ✅ Access Granted! <br>
+    <div class="success-timer">Showing in <span id="countdown">3</span> sec...</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const unlockItem=document.getElementById("ctx_unlock");
+  const modalBack=document.getElementById("modalBack");
+  const passInput=document.getElementById("passInput");
+  const checkPass=document.getElementById("checkPass");
+  const hiddenBtn=document.getElementById("hiddenBtn");
+  const alertOverlay=document.getElementById("alertOverlay");
+  const successOverlay=document.getElementById("successOverlay");
+  const countdown=document.getElementById("countdown");
+
+  // === Password Obfuscation ===
+  const junk1=["Sudhan","Fake112","Sudh@100","xPass"];
+  const junk2=["100@","Hello112","KeyX","Lock"];
+  const junk3=["112","Pass-100","Admin","Root"];
+
+  const realPass = junk1[0]+"shu"+junk2[0]+junk3[0]; // Sudhanshu100@112
+
+  const dummies = ["Sudhanshu112","Sudh@100112","KeyXAdmin","SudhanPass-100"];
+
+  function showAlert(){
+    alertOverlay.style.display="flex";
+    setTimeout(()=>{alertOverlay.style.display="none";},3000);
+  }
+
+  // Right click => alert
+  window.addEventListener("contextmenu",e=>{
+    e.preventDefault(); showAlert();
+  });
+
+  // Unlock button => modal
+  unlockItem.addEventListener("click",()=>{
+    modalBack.style.display="grid";
+    passInput.value="";
+    setTimeout(()=>passInput.focus(),150);
+  });
+
+  // Password check
+  checkPass.addEventListener("click",()=>{
+    const input=passInput.value.trim();
+    if(input===realPass){
+      modalBack.style.display="none";
+      successOverlay.style.display="flex";
+      let time=3;
+      countdown.textContent=time;
+      let interval=setInterval(()=>{
+        time--; countdown.textContent=time;
+        if(time<=0){
+          clearInterval(interval);
+          successOverlay.style.display="none";
+          hiddenBtn.style.display="block";
+        }
+      },1000);
+    } else {
+      showAlert();
+    }
+  });
+
+  // 12 taps = open modal
+  let count=0,timer;
+  function detectUnlock(){
+    count++; clearTimeout(timer);
+    if(count>=12){
+      modalBack.style.display="grid";
+      passInput.value="";
+      setTimeout(()=>passInput.focus(),150);
+      count=0;
+    }
+    timer=setTimeout(()=>count=0,2000);
+  }
+  window.addEventListener("mousedown",e=>{if(e.button===0)detectUnlock();});
+  window.addEventListener("touchstart",detectUnlock);
+
+})();
+</script>
+</body>
+</html>
