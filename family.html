@@ -10,6 +10,61 @@
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
+   <style>
+    :root {
+      --blue: #00eaff;
+      --purple: #9b59ff;
+      --pink: #ff4d6d;
+      --white: #ffffff;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px var(--purple);
+    }
+
+    .content {
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    /* Slideshow Container */
+    .slideshow {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      border-radius: 30px;
+      overflow: hidden;
+      height: auto;
+    }
+
+    .slideshow img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      border-radius: 30px;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .slideshow img.active {
+      opacity: 1;
+      z-index: 1;
+      position: relative;
+    }
+  </style>
   <style>
     :root {
       --blue: #00eaff;
@@ -188,20 +243,94 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="nav">
-    <div class="logo-circle">
-      <img src="https://i.ibb.co/r2mZRzSF/logo.png" alt="DWC Logo" />
-    </div>
-    <div>
-      <a href="home.html"><i class="fa fa-house"></i> Home</a>
-      <a href="gallery.html"><i class="fa fa-image"></i> Gallery</a>
-      <a href="#contact.html"><i class="fa fa-envelope"></i> Contact</a>
-    </div>
-    <div class="logo-circle">
-      <img src="https://i.ibb.co/r2mZRzSF/logo.png" alt="DWC Logo" />
-    </div>
-  </nav>
+<!-- Navbar -->
+<nav class="nav">
+  <div class="logo-circle">
+    <img src="https://i.ibb.co/r2mZRzSF/logo.png" alt="DWC Logo" />
+  </div>
+
+  <!-- Updated "Our Family" Button as Heading with Icon -->
+  <div class="nav-heading">
+    <a href="#">
+      <i class="fas fa-people-group family-icon"></i> Our Family
+    </a>
+  </div>
+
+  <div class="logo-circle">
+    <img src="https://i.ibb.co/r2mZRzSF/logo.png" alt="DWC Logo" />
+  </div>
+</nav>
+
+<style>
+/* Heading Button Styles */
+.nav-heading a {
+  font-family: "Orbitron", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 10px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #00eaff, #9b59ff, #ff4d6d);
+  background-size: 300% 300%;
+  animation: gradientShift 6s infinite alternate;
+  box-shadow: 0 0 15px rgba(155, 89, 255, 0.6),
+              0 0 25px rgba(0, 234, 255, 0.6);
+  transition: 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-heading a:hover {
+  transform: scale(1.12);
+  box-shadow: 0 0 25px #00eaff, 0 0 35px #9b59ff, 0 0 50px #ff4d6d;
+  color: #fff;
+}
+
+/* Icon Styling */
+.family-icon {
+  font-size: 26px;
+  color: #ffe066;
+  text-shadow: 0 0 8px #ff4d6d, 0 0 15px #ffe066, 0 0 25px #ff4d6d;
+  animation: iconPulse 1.5s infinite alternate;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes iconPulse {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(1.3); opacity: 1; }
+}
+</style>
+
+
+
+    <!-- Slideshow Container -->
+  <div class="slideshow">
+    <img src="https://i.ibb.co/twLnmXXZ/01.jpg" class="active" alt="01">
+    <img src="https://i.ibb.co/LXjWrxqR/02.jpg" alt="02">
+    <img src="https://i.ibb.co/fz4Tj0RV/03.jpg" alt="03">
+    <img src="https://i.ibb.co/vvzFdW9B/04.jpg" alt="04">
+    <img src="https://i.ibb.co/5hG8RJtb/05.jpg" alt="05">
+    <img src="https://picsum.photos/id/1018/1200/800" alt="Random">
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.slideshow img');
+    let index = 0;
+
+    setInterval(() => {
+      images[index].classList.remove('active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('active');
+    }, 6000);
+  </script>
 
   <!-- Gallery Section -->
   <section class="gallery">
@@ -369,10 +498,16 @@
           </div>
         </div>
       </div>
-
-	  
-	  
-	  
+ <div class="gallery-card">
+        <img src="https://picsum.photos/id/1016/600/400" alt="14">
+        <div class="card-content">
+          <h3>Cyber Setup 2</h3>
+          <div class="btn-row">
+            <a href="https://picsum.photos/id/1016/1200/800" target="_blank" class="btn view"><i class="fa fa-eye"></i> View</a>
+            <a href="#" class="btn download" onclick="downloadImage('https://picsum.photos/id/1016/1200/800','cyber-setup-2.jpg')"><i class="fa fa-download"></i> Download</a>
+          </div>
+        </div>
+      </div>
 	   <div class="gallery-card">
         <img src="https://picsum.photos/id/1016/600/400" alt="15">
         <div class="card-content">
@@ -444,7 +579,341 @@
 
     </div>
   </section>
+<style>
+#our-family {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0a0020, #1a0033);
+  text-align: center;
+}
 
+#our-family .main-heading {
+  font-family: "Orbitron", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #00eaff;
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px #9b59ff, 0 0 30px #00eaff;
+}
+
+.pdf-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.pdf-card {
+  background: rgba(20, 0, 40, 0.95);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 20px #9b59ff, 0 0 30px #00eaff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pdf-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px #ff4d6d, 0 0 40px #00eaff;
+}
+
+.pdf-card h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 22px;
+  color: #ff4d6d;
+  margin: 10px 0 15px;
+}
+
+.pdf-card iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  border: 2px solid #9b59ff;
+  margin-bottom: 15px;
+}
+
+.pdf-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.view-btn, .download-btn {
+  font-family: "Orbitron", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.view-btn {
+  background: linear-gradient(135deg, #00eaff, #007bff);
+  color: #fff;
+}
+.view-btn:hover {
+  box-shadow: 0 0 20px #00eaff;
+  transform: scale(1.05);
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #ff4d6d, #9b59ff);
+  color: #fff;
+}
+.download-btn:hover {
+  box-shadow: 0 0 20px #ff4d6d;
+  transform: scale(1.05);
+}
+
+</style>
+<section id="our-family">
+  <h1 class="main-heading">📄 Our Family PDFs</h1>
+  <div class="pdf-container">
+
+    <!-- PDF Card 1 -->
+    <div class="pdf-card">
+      <h2>👨 Father’s Document</h2>
+      <iframe src="https://www.drishtiias.com/images/pdf/class%209%20science.pdf" width="100%" height="250px"></iframe>
+      <div class="pdf-buttons">
+        <a href="https://www.drishtiias.com/images/pdf/class%209%20science.pdf" target="_blank" class="view-btn">👁 View</a>
+        <a href="https://www.drishtiias.com/images/pdf/class%209%20science.pdf" download class="download-btn">⬇ Download</a>
+      </div>
+    </div>
+
+    <!-- PDF Card 2 -->
+    <div class="pdf-card">
+      <h2>👩 Mother’s Document</h2>
+      <iframe src="mother-doc.pdf" width="100%" height="250px"></iframe>
+      <div class="pdf-buttons">
+        <a href="mother-doc.pdf" target="_blank" class="view-btn">👁 View</a>
+        <a href="mother-doc.pdf" download class="download-btn">⬇ Download</a>
+      </div>
+    </div>
+
+    <!-- PDF Card 3 -->
+    <div class="pdf-card">
+      <h2>👧 Sister’s Document</h2>
+      <iframe src="sister-doc.pdf" width="100%" height="250px"></iframe>
+      <div class="pdf-buttons">
+        <a href="sister-doc.pdf" target="_blank" class="view-btn">👁 View</a>
+        <a href="sister-doc.pdf" download class="download-btn">⬇ Download</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section id="our-family-videos">
+  <h1 class="main-heading">🎬 Our Family Videos</h1>
+  <div class="video-container">
+
+    <!-- Video Card 1 -->
+    <div class="video-card">
+      <h2>👨 Father’s Speech</h2>
+      <video controls width="100%" height="250px">
+        <source src="father-speech.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-buttons">
+        <a href="father-speech.mp4" target="_blank" class="view-btn">👁 View</a>
+        <a href="father-speech.mp4" download class="download-btn">⬇ Download</a>
+      </div>
+    </div>
+
+    <!-- Video Card 2 -->
+    <div class="video-card">
+      <h2>👩 Mother’s Message</h2>
+      <video controls width="100%" height="250px">
+        <source src="mother-message.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-buttons">
+        <a href="mother-message.mp4" target="_blank" class="view-btn">👁 View</a>
+        <a href="mother-message.mp4" download class="download-btn">⬇ Download</a>
+      </div>
+    </div>
+
+    <!-- Video Card 3 -->
+    <div class="video-card">
+      <h2>👧 Sister’s Dance</h2>
+      <video controls width="100%" height="250px">
+        <source src="sister-dance.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-buttons">
+        <a href="sister-dance.mp4" target="_blank" class="view-btn">👁 View</a>
+        <a href="sister-dance.mp4" download class="download-btn">⬇ Download</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<style>
+#our-family-videos {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0a0020, #1a0033);
+  text-align: center;
+}
+
+#our-family-videos .main-heading {
+  font-family: "Orbitron", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #00eaff;
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px #9b59ff, 0 0 30px #00eaff;
+}
+
+.video-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.video-card {
+  background: rgba(20, 0, 40, 0.95);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 20px #9b59ff, 0 0 30px #00eaff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px #ff4d6d, 0 0 40px #00eaff;
+}
+
+.video-card h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 22px;
+  color: #ff4d6d;
+  margin: 10px 0 15px;
+}
+
+.video-card video {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  border: 2px solid #9b59ff;
+  margin-bottom: 15px;
+}
+
+.video-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.view-btn, .download-btn {
+  font-family: "Orbitron", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.view-btn {
+  background: linear-gradient(135deg, #00eaff, #007bff);
+  color: #fff;
+}
+.view-btn:hover {
+  box-shadow: 0 0 20px #00eaff;
+  transform: scale(1.05);
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #ff4d6d, #9b59ff);
+  color: #fff;
+}
+.download-btn:hover {
+  box-shadow: 0 0 20px #ff4d6d;
+  transform: scale(1.05);
+}
+
+</style>
+<section id="family-contacts">
+  <h1 class="main-heading">📇 Our Family Contact List</h1>
+  <div class="contacts-container">
+
+    <!-- Contact Card 1 -->
+    <div class="contact-card">
+      <h2>👨 Rajesh Kumar</h2>
+      <p>📞 +91 9876543210</p>
+    </div>
+
+    <!-- Contact Card 2 -->
+    <div class="contact-card">
+      <h2>👩 Suman Kumar</h2>
+      <p>📞 +91 9123456780</p>
+    </div>
+
+    <!-- Contact Card 3 -->
+    <div class="contact-card">
+      <h2>👧 Radha Kumar</h2>
+      <p>📞 +91 9988776655</p>
+    </div>
+
+    <!-- Contact Card 4 -->
+    <div class="contact-card">
+      <h2>👧 Pooja Kumar</h2>
+      <p>📞 +91 9871122334</p>
+    </div>
+
+  </div>
+</section>
+<style>
+#family-contacts {
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #0a0020, #1a0033);
+  text-align: center;
+}
+
+#family-contacts .main-heading {
+  font-family: "Orbitron", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #00eaff;
+  margin-bottom: 30px;
+  text-shadow: 0 0 15px #9b59ff, 0 0 25px #00eaff;
+}
+
+.contacts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.contact-card {
+  background: rgba(20, 0, 40, 0.95);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 0 15px #9b59ff, 0 0 25px #00eaff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px #ff4d6d, 0 0 35px #00eaff;
+}
+
+.contact-card h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 20px;
+  color: #ff4d6d;
+  margin-bottom: 8px;
+}
+
+.contact-card p {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+</style>
  <script>
   // Safe download function (cross-origin fix)
   async function downloadImage(url, filename) {
