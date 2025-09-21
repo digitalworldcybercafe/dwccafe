@@ -11,30 +11,30 @@
   <style>
     body {
       margin: 0;
-      background: #eaf6ff;
+      background: linear-gradient(135deg, #eaf6ff, #dff1ff);
       font-family: "Poppins", Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 20px;
+      padding: 25px;
     }
 
     /* Main Banner */
     .curved-box {
       width: 100%;
-      max-width: 1700px;
-      background: rgba(255, 255, 255, 0.98);
+      max-width: 1600px;
+      background: #fffffffa;
       border-radius: 65px;
       border: 4px solid #00aaff;
-      box-shadow: 0 15px 45px rgba(0, 170, 255, 0.35);
+      box-shadow: 0 20px 55px rgba(0, 170, 255, 0.35);
       position: relative;
       overflow: hidden;
-      padding: 50px 60px;
+      padding: 50px 70px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
     }
 
     /* Animated Border */
@@ -64,18 +64,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 25px;
-      margin-bottom: 30px;
+      gap: 30px;
+      margin-bottom: 40px;
       flex-wrap: wrap;
     }
 
     .logo-circle {
-      width: 90px;
-      height: 90px;
+      width: 95px;
+      height: 95px;
       border-radius: 50%;
       overflow: hidden;
-      animation: spin 14s linear infinite;
-      box-shadow: 0 0 22px #00aaff, 0 0 35px #88ddff;
+      animation: spin 16s linear infinite;
+      box-shadow: 0 0 25px #00aaff, 0 0 40px #88ddff;
       background: #fff;
       transition: all .3s ease;
     }
@@ -89,7 +89,7 @@
 
     .logo-circle:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 35px #00aaff, 0 0 50px #88ddff;
+      box-shadow: 0 0 40px #00aaff, 0 0 55px #88ddff;
     }
 
     @keyframes spin {
@@ -99,11 +99,11 @@
 
     .heading-with-logo h1 {
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(32px, 6vw, 65px);
+      font-size: clamp(36px, 5vw, 70px);
       background: linear-gradient(90deg, #00aaff, #0044ff, #00e6ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 22px rgba(0,170,255,0.6);
+      text-shadow: 0 0 25px rgba(0,170,255,0.6);
       margin: 0;
       letter-spacing: 2.5px;
       text-align: center;
@@ -117,21 +117,21 @@
     }
 
     .banner-content p {
-      font-size: clamp(17px, 2vw, 22px);
+      font-size: clamp(18px, 2vw, 24px);
       color: #111;
-      margin: 15px 0 30px 0;
+      margin: 15px 0 40px 0;
       font-weight: 600;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
-    /* Services Grid (numbered list style) */
+    /* Services Grid */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
       width: 100%;
-      max-width: 1350px;
-      margin: 0 auto 50px auto;
+      max-width: 1400px;
+      margin: 0 auto 60px auto;
       text-align: left;
     }
 
@@ -145,23 +145,23 @@
       transition: all 0.3s ease;
       background: linear-gradient(135deg, #00aaff, #0044ff);
       color: #fff;
-      box-shadow: 0 0 12px rgba(0,170,255,0.55);
+      box-shadow: 0 0 15px rgba(0,170,255,0.55);
       text-align: left;
     }
 
     .service-btn:hover {
       background: linear-gradient(135deg, #0044ff, #00e6ff);
-      transform: translateY(-3px) scale(1.06);
-      box-shadow: 0 0 18px rgba(0,170,255,0.7);
+      transform: translateY(-4px) scale(1.07);
+      box-shadow: 0 0 22px rgba(0,170,255,0.7);
     }
 
     /* Bottom Buttons */
     .bottom-buttons {
-      margin-top: 15px;
+      margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 18px;
+      gap: 20px;
     }
 
     .bottom-btn {
@@ -174,25 +174,25 @@
       transition: all 0.3s ease;
       background: linear-gradient(135deg, #ff6600, #ff0044);
       color: #fff;
-      box-shadow: 0 0 16px rgba(255, 102, 0, 0.55);
+      box-shadow: 0 0 18px rgba(255, 102, 0, 0.55);
     }
 
     .bottom-btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(0,0,0,0.35);
+      box-shadow: 0 0 30px rgba(0,0,0,0.35);
     }
 
     /* Note Section */
     .note-box {
       margin-top: 40px;
-      background: #f0f8ff;
+      background: #f9fbff;
       border-left: 6px solid #00aaff;
-      padding: 20px 25px;
-      border-radius: 12px;
+      padding: 22px 28px;
+      border-radius: 14px;
       font-size: 16px;
       font-weight: 600;
       color: #222;
-      line-height: 1.7;
+      line-height: 1.8;
       max-width: 1200px;
       text-align: justify;
     }
@@ -220,11 +220,38 @@
 
     /* Footer */
     .footer {
-      margin-top: 25px;
+      margin-top: 30px;
       font-size: 15px;
       color: #555;
       font-weight: 600;
       text-align: center;
+    }
+
+    /* Popup */
+    #popupBox {
+      display:none;
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.6);
+      justify-content:center;
+      align-items:center;
+      z-index:999;
+    }
+
+    #popupBox .popup-content {
+      background:#fff;
+      padding:30px;
+      border-radius:18px;
+      text-align:center;
+      max-width:400px;
+      width:90%;
+      box-shadow:0 5px 25px rgba(0,0,0,0.3);
+    }
+
+    #popupBox h3 {
+      color:#0044ff;
+      margin-bottom:15px;
     }
 
     /* Responsive */
@@ -250,7 +277,7 @@
       }
       .bottom-btn {
         width: 100%;
-        max-width: 280px;
+        max-width: 300px;
         font-size: 16px;
       }
       .note-box {
@@ -316,39 +343,35 @@
         <button class="service-btn">34. Photo Editing</button>
         <button class="service-btn">35. Data Entry</button>
         <button class="service-btn">36. Project Work</button>
-      <button class="service-btn" onclick="openPopup()">37. Other Works</button>
-</div>
+        <button class="service-btn" onclick="openPopup()">37. Other Works</button>
+      </div>
 
-<!-- Popup Box -->
-<!-- Popup Box -->
-<div id="popupBox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
-background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:999;">
-  <div style="background:#fff; padding:25px; border-radius:15px; text-align:center; max-width:350px; width:90%; box-shadow:0 5px 20px rgba(0,0,0,0.3);">
-    <h3 style="color:#0044ff; margin-bottom:15px;">किसी अन्य कार्य के लिए</h3>
-    <p style="font-size:16px; color:#333; margin-bottom:20px;">कृपया WhatsApp पर संपर्क करें 👇</p>
-    
-    <a href="https://wa.me/918986029267?text=Hello%20Digital%20World%20Cyber%20Cafe!%20I%20have%20another%20work%20request." 
-       target="_blank" 
-       style="display:inline-block; background:#25D366; color:white; padding:12px 25px; border-radius:40px; font-size:18px; font-weight:700; text-decoration:none; box-shadow:0 4px 12px rgba(37,211,102,0.4);">
-       📱 WhatsApp Us
-    </a>
-    
-    <br><br>
-    <button onclick="closePopup()" style="margin-top:10px; padding:10px 20px; border:none; border-radius:8px; background:#ccc; cursor:pointer;">
-      ❌ बंद करें
-    </button>
-  </div>
-</div>
+      <!-- Popup Box -->
+      <div id="popupBox">
+        <div class="popup-content">
+          <h3>किसी अन्य कार्य के लिए</h3>
+          <p style="font-size:16px; color:#333; margin-bottom:20px;">कृपया WhatsApp पर संपर्क करें 👇</p>
+          <a href="https://wa.me/918986029267?text=Hello%20Digital%20World%20Cyber%20Cafe!%20I%20have%20another%20work%20request." 
+             target="_blank" 
+             style="display:inline-block; background:#25D366; color:white; padding:12px 25px; border-radius:40px; font-size:18px; font-weight:700; text-decoration:none; box-shadow:0 4px 12px rgba(37,211,102,0.4);">
+             📱 WhatsApp Us
+          </a>
+          <br><br>
+          <button onclick="closePopup()" style="margin-top:10px; padding:10px 20px; border:none; border-radius:8px; background:#ccc; cursor:pointer;">
+            ❌ बंद करें
+          </button>
+        </div>
+      </div>
 
-<!-- Script -->
-<script>
-  function openPopup() {
-    document.getElementById("popupBox").style.display = "flex";
-  }
-  function closePopup() {
-    document.getElementById("popupBox").style.display = "none";
-  }
-</script>
+      <!-- Script -->
+      <script>
+        function openPopup() {
+          document.getElementById("popupBox").style.display = "flex";
+        }
+        function closePopup() {
+          document.getElementById("popupBox").style.display = "none";
+        }
+      </script>
 
       <!-- Bottom Special Buttons -->
       <div class="bottom-buttons">
@@ -357,39 +380,39 @@ background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:
         <button class="bottom-btn">📍 Location</button>
         <button class="bottom-btn">💬 Feedback</button>
       </div>
-<!-- Visit Main Website Button -->
-<div style="text-align:center; margin-top:25px;">
-  <a href="https://digitalw100.github.io/DIGITAL-WORLD/" target="_blank" 
-     style="display:inline-block; background:linear-gradient(135deg, #0066ff, #00ccff); color:white; 
-            padding:14px 30px; border-radius:40px; font-size:18px; font-weight:700; 
-            text-decoration:none; box-shadow:0 4px 12px rgba(0,102,255,0.4); transition:0.3s;">
-     🌐 Visit Main Website
-  </a>
-</div>
+
+      <!-- Visit Main Website Button -->
+      <div style="text-align:center; margin-top:30px;">
+        <a href="https://digitalw100.github.io/DIGITAL-WORLD/" target="_blank" 
+           style="display:inline-block; background:linear-gradient(135deg, #0066ff, #00ccff); color:white; 
+                  padding:14px 30px; border-radius:40px; font-size:18px; font-weight:700; 
+                  text-decoration:none; box-shadow:0 4px 12px rgba(0,102,255,0.4); transition:0.3s;">
+           🌐 Visit Main Website
+        </a>
+      </div>
 
       <!-- Note Section -->
-      <!-- Note Section -->
-<div class="note-box">
-  <strong>Note:-</strong> Digital World Cyber Café की services के मुताबिक online से लेकर offline तक सारे के सारे works किए जाते हैं। 
-  आपको café आने की कोई आवश्यकता नहीं, आप हमसे WhatsApp के द्वारा जुड़ सकते हैं और अपने हिसाब से अपना काम करवा सकते हैं।  
-  यहाँ आपको सभी काम पूरे कर के आपकी बताई जगह पर update और online payment के साथ full services आपके घर पहुँचा दी जाएंगी।  
-  <br><br>
-  ⚠️ <strong>Important:</strong> किसी भी work को शुरू करने से पहले आपको <strong>₹49 pre-payment</strong> करना अनिवार्य होगा।  
-  उसके बाद आपको <strong>live update, process & progress report live updated page</strong> के साथ प्रदान किया जायेगा!watsapp पर आपके द्वारा संपर्क के बाद आपको WhatsApp पर <strong>full process update page link</strong> प्रदान किया जायेगा।
-  <div class="note-box">
-  <strong>Note:-</strong> किसी भी कार्य को करवाने से पहले कृपया <strong>WhatsApp पर संपर्क करें</strong> और कार्य की <strong>पुष्टि</strong> अवश्य करें।  
-</div>
+      <div class="note-box">
+        <strong>Note:-</strong> Digital World Cyber Café की services के मुताबिक online से लेकर offline तक सारे works किए जाते हैं।  
+        आपको café आने की आवश्यकता नहीं है। आप WhatsApp द्वारा जुड़कर अपना काम करवा सकते हैं।  
+        सभी काम पूरे कर के आपकी बताई जगह पर update और online payment के साथ services आपके घर पहुँचा दी जाएंगी।  
 
-  <!-- WhatsApp Contact Button -->
-  <div style="margin-top: 20px; text-align: center;">
-    <a href="https://wa.me/918986029267?text=Hello%20Digital%20World%20Cyber%20Cafe!%20I%20want%20to%20know%20more%20about%20your%20services." 
-       target="_blank" 
-       style="display: inline-block; background: #25D366; color: white; padding: 12px 25px; border-radius: 40px; font-size: 18px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(37,211,102,0.4); transition: 0.3s;">
-       📱 WhatsApp Us: 8986029267
-    </a>
-  </div>
-</div>
+        <br><br>
+        ⚠️ <strong>Important:</strong> किसी भी work को शुरू करने से पहले <strong>₹49 pre-payment</strong> अनिवार्य है।  
+        उसके बाद आपको <strong>live update & progress report</strong> WhatsApp पर दी जाएगी और साथ में एक <strong>update page link</strong> भी मिलेगा।  
 
+        <br><br>
+        👉 किसी भी कार्य को करवाने से पहले कृपया <strong>WhatsApp पर संपर्क करें</strong> और कार्य की <strong>पुष्टि</strong> अवश्य करें।
+      </div>
+
+      <!-- WhatsApp Contact Button -->
+      <div style="margin-top: 25px; text-align: center;">
+        <a href="https://wa.me/918986029267?text=Hello%20Digital%20World%20Cyber%20Cafe!%20I%20want%20to%20know%20more%20about%20your%20services." 
+           target="_blank" 
+           style="display: inline-block; background: #25D366; color: white; padding: 12px 25px; border-radius: 40px; font-size: 18px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(37,211,102,0.4); transition: 0.3s;">
+           📱 WhatsApp Us: 8986029267
+        </a>
+      </div>
 
       <!-- Website Link -->
       <div class="website-link">
@@ -402,6 +425,5 @@ background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:
       </div>
     </div>
   </div>
-
 </body>
 </html>
