@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital World Cyber Café</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: #eaf6ff;
+      font-family: "Poppins", Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Main Banner */
+    .curved-box {
+      width: 100%;
+      max-width: 1700px;
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 65px;
+      border: 4px solid #00aaff;
+      box-shadow: 0 15px 45px rgba(0, 170, 255, 0.35);
+      position: relative;
+      overflow: hidden;
+      padding: 50px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Animated Border */
+    .curved-box::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 65px;
+      padding: 4px;
+      background: linear-gradient(120deg, #00aaff, #ffffff, #00aaff, #0044ff, #00aaff);
+      background-size: 400% 400%;
+      animation: dnaGlow 8s ease infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+              mask-composite: exclude;
+      z-index: -1;
+    }
+
+    @keyframes dnaGlow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Heading with logos */
+    .heading-with-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .logo-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      animation: spin 14s linear infinite;
+      box-shadow: 0 0 22px #00aaff, 0 0 35px #88ddff;
+      background: #fff;
+      transition: all .3s ease;
+    }
+
+    .logo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .logo-circle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 35px #00aaff, 0 0 50px #88ddff;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .heading-with-logo h1 {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(32px, 6vw, 65px);
+      background: linear-gradient(90deg, #00aaff, #0044ff, #00e6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 22px rgba(0,170,255,0.6);
+      margin: 0;
+      letter-spacing: 2.5px;
+      text-align: center;
+    }
+
+    /* Banner tagline */
+    .banner-content {
+      flex: 1;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .banner-content p {
+      font-size: clamp(17px, 2vw, 22px);
+      color: #111;
+      margin: 15px 0 30px 0;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    /* Services Grid (numbered list style) */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1350px;
+      margin: 0 auto 50px auto;
+      text-align: left;
+    }
+
+    .service-btn {
+      padding: 18px 22px;
+      border-radius: 35px;
+      font-size: 17px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #00aaff, #0044ff);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(0,170,255,0.55);
+      text-align: left;
+    }
+
+    .service-btn:hover {
+      background: linear-gradient(135deg, #0044ff, #00e6ff);
+      transform: translateY(-3px) scale(1.06);
+      box-shadow: 0 0 18px rgba(0,170,255,0.7);
+    }
+
+    /* Bottom Buttons */
+    .bottom-buttons {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .bottom-btn {
+      padding: 16px 28px;
+      border-radius: 40px;
+      font-size: 18px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #ff6600, #ff0044);
+      color: #fff;
+      box-shadow: 0 0 16px rgba(255, 102, 0, 0.55);
+    }
+
+    .bottom-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(0,0,0,0.35);
+    }
+
+    /* Note Section */
+    .note-box {
+      margin-top: 40px;
+      background: #f0f8ff;
+      border-left: 6px solid #00aaff;
+      padding: 20px 25px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #222;
+      line-height: 1.7;
+      max-width: 1200px;
+      text-align: justify;
+    }
+
+    .note-box strong {
+      color: #0044ff;
+    }
+
+    /* Website link */
+    .website-link {
+      margin-top: 35px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .website-link a {
+      color: #0044ff;
+      text-decoration: none;
+    }
+
+    .website-link a:hover {
+      color: #ff0044;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 25px;
+      font-size: 15px;
+      color: #555;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .curved-box {
+        padding: 25px;
+        border-radius: 35px;
+      }
+      .heading-with-logo {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .logo-circle {
+        width: 70px;
+        height: 70px;
+      }
+      .heading-with-logo h1 {
+        font-size: 32px;
+      }
+      .service-btn {
+        font-size: 15px;
+        padding: 14px 18px;
+      }
+      .bottom-btn {
+        width: 100%;
+        max-width: 280px;
+        font-size: 16px;
+      }
+      .note-box {
+        font-size: 14px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="curved-box">
+    <!-- Heading -->
+    <div class="heading-with-logo">
+      <div class="logo-circle">
+        <img src="https://i.ibb.co/r2mZRzSF/logo.png" alt="Cyber Café Logo">
+      </div>
+      <h1>Digital World Cyber Café</h1>
+      <div class="logo-circle">
+        <img src="https://i.ibb.co/r2mZRzSF/logo.png" alt="Cyber Café Logo">
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="banner-content">
+      <p>🌐 Fast, Secure & Reliable Online Services — Explore 100+ Digital Solutions in One Place.</p>
+      
+      <!-- Service Buttons Grid -->
+      <div class="services-grid">
+        <button class="service-btn">1. Online Forms</button>
+        <button class="service-btn">2. Aadhaar / PAN</button>
+        <button class="service-btn">3. Passport / Visa</button>
+        <button class="service-btn">4. Banking & KYC</button>
+        <button class="service-btn">5. Education Services</button>
+        <button class="service-btn">6. Scholarships</button>
+        <button class="service-btn">7. Exam Forms</button>
+        <button class="service-btn">8. Results Download</button>
+        <button class="service-btn">9. Resume / CV</button>
+        <button class="service-btn">10. Job Apply</button>
+        <button class="service-btn">11. Printing (B/W)</button>
+        <button class="service-btn">12. Printing (Color)</button>
+        <button class="service-btn">13. Scanning / Xerox</button>
+        <button class="service-btn">14. Photo Print</button>
+        <button class="service-btn">15. Lamination</button>
+        <button class="service-btn">16. Spiral Binding</button>
+        <button class="service-btn">17. Mobile Recharge</button>
+        <button class="service-btn">18. DTH Recharge</button>
+        <button class="service-btn">19. Bill Payment</button>
+        <button class="service-btn">20. Fastag Recharge</button>
+        <button class="service-btn">21. UPI Services</button>
+        <button class="service-btn">22. Ticket Booking</button>
+        <button class="service-btn">23. Digital Signature</button>
+        <button class="service-btn">24. Tax / GST</button>
+        <button class="service-btn">25. Insurance</button>
+        <button class="service-btn">26. PF / Pension</button>
+        <button class="service-btn">27. Voter ID</button>
+        <button class="service-btn">28. Driving License</button>
+        <button class="service-btn">29. Land Records</button>
+        <button class="service-btn">30. Gaming</button>
+        <button class="service-btn">31. Typing Work</button>
+        <button class="service-btn">32. Cyber Security Help</button>
+        <button class="service-btn">33. IT Support</button>
+        <button class="service-btn">34. Photo Editing</button>
+        <button class="service-btn">35. Data Entry</button>
+        <button class="service-btn">36. Project Work</button>
+      <button class="service-btn" onclick="openPopup()">37. Other Works</button>
+</div>
+
+<!-- Popup Box -->
+<!-- Popup Box -->
+<div id="popupBox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:999;">
+  <div style="background:#fff; padding:25px; border-radius:15px; text-align:center; max-width:350px; width:90%; box-shadow:0 5px 20px rgba(0,0,0,0.3);">
+    <h3 style="color:#0044ff; margin-bottom:15px;">किसी अन्य कार्य के लिए</h3>
+    <p style="font-size:16px; color:#333; margin-bottom:20px;">कृपया WhatsApp पर संपर्क करें 👇</p>
+    
+    <a href="https://wa.me/918986029267?text=Hello%20Digital%20World%20Cyber%20Cafe!%20I%20have%20another%20work%20request." 
+       target="_blank" 
+       style="display:inline-block; background:#25D366; color:white; padding:12px 25px; border-radius:40px; font-size:18px; font-weight:700; text-decoration:none; box-shadow:0 4px 12px rgba(37,211,102,0.4);">
+       📱 WhatsApp Us
+    </a>
+    
+    <br><br>
+    <button onclick="closePopup()" style="margin-top:10px; padding:10px 20px; border:none; border-radius:8px; background:#ccc; cursor:pointer;">
+      ❌ बंद करें
+    </button>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  function openPopup() {
+    document.getElementById("popupBox").style.display = "flex";
+  }
+  function closePopup() {
+    document.getElementById("popupBox").style.display = "none";
+  }
+</script>
+
+      <!-- Bottom Special Buttons -->
+      <div class="bottom-buttons">
+        <button class="bottom-btn">📞 Contact Us</button>
+        <button class="bottom-btn">ℹ️ About Us</button>
+        <button class="bottom-btn">📍 Location</button>
+        <button class="bottom-btn">💬 Feedback</button>
+      </div>
+<!-- Visit Main Website Button -->
+<div style="text-align:center; margin-top:25px;">
+  <a href="https://digitalw100.github.io/DIGITAL-WORLD/" target="_blank" 
+     style="display:inline-block; background:linear-gradient(135deg, #0066ff, #00ccff); color:white; 
+            padding:14px 30px; border-radius:40px; font-size:18px; font-weight:700; 
+            text-decoration:none; box-shadow:0 4px 12px rgba(0,102,255,0.4); transition:0.3s;">
+     🌐 Visit Main Website
+  </a>
+</div>
+
+      <!-- Note Section -->
+      <!-- Note Section -->
+<div class="note-box">
+  <strong>Note:-</strong> Digital World Cyber Café की services के मुताबिक online से लेकर offline तक सारे के सारे works किए जाते हैं। 
+  आपको café आने की कोई आवश्यकता नहीं, आप हमसे WhatsApp के द्वारा जुड़ सकते हैं और अपने हिसाब से अपना काम करवा सकते हैं।  
+  यहाँ आपको सभी काम पूरे कर के आपकी बताई जगह पर update और online payment के साथ full services आपके घर पहुँचा दी जाएंगी।  
+  <br><br>
+  ⚠️ <strong>Important:</strong> किसी भी work को शुरू करने से पहले आपको <strong>₹49 pre-payment</strong> करना अनिवार्य होगा।  
+  उसके बाद आपको <strong>live update, process & progress report live updated page</strong> के साथ प्रदान किया जायेगा!watsapp पर आपके द्वारा संपर्क के बाद आपको WhatsApp पर <strong>full process update page link</strong> प्रदान किया जायेगा।
+  <div class="note-box">
+  <strong>Note:-</strong> किसी भी कार्य को करवाने से पहले कृपया <strong>WhatsApp पर संपर्क करें</strong> और कार्य की <strong>पुष्टि</strong> अवश्य करें।  
+</div>
+
+  <!-- WhatsApp Contact Button -->
+  <div style="margin-top: 20px; text-align: center;">
+    <a href="https://wa.me/918986029267?text=Hello%20Digital%20World%20Cyber%20Cafe!%20I%20want%20to%20know%20more%20about%20your%20services." 
+       target="_blank" 
+       style="display: inline-block; background: #25D366; color: white; padding: 12px 25px; border-radius: 40px; font-size: 18px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(37,211,102,0.4); transition: 0.3s;">
+       📱 WhatsApp Us: 8986029267
+    </a>
+  </div>
+</div>
+
+
+      <!-- Website Link -->
+      <div class="website-link">
+        Visit us: <a href="https://digitalw100.github.io/DIGITAL-WORLD/" target="_blank">https://digitalw100.github.io/DIGITAL-WORLD/</a>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        © 2025 Digital World Cyber Café | All Rights Reserved
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
